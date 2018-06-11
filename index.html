@@ -1,0 +1,72 @@
+<html>
+<head>
+
+<title>Login</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<meta name="google-signin-client_id" content="1080418412258-tnjaquvn33fpfe40u0n3asgf15hq2jpm.apps.googleusercontent.com">
+<script src="https://apis.google.com/js/platform.js" async defer></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="script.js"></script>
+<script>
+function getImage()
+{
+	var client = new ImgurClient("CLIENT_ID", "CLIENT_SECRET");
+	var endpoint = new ImageEndpoint(client);
+	var image = await endpoint.GetImageAsync("IMAGE_ID");
+	Debug.Write("Image retrieved. Image Url: " + image.Link);
+	
+}
+</script>
+
+<style>
+	.data{
+		display:none;
+	}
+	
+	.g-signin2{
+	
+	}
+	.button label{
+		width:100px;
+		height:40px;
+		background-color:#474E69;
+		color:#FFF;
+		border-radius:3px;
+		-moz-box-radius:3px;
+		-webkit-border-radius:3px;	
+		}
+
+		input, textarea{
+			padding:10 px;
+			border:1px solid #E5E5E5;
+			width:200px;
+			color:#999999;
+			box-shadow:rgba(0,0,0,0.1) 0px 0px 8px;
+			-moz-box-shadow:rgba(0,0,0,0.1) 0px 0px 8px;
+			-webkit-box-shadow:rgba(0,0,0,0.1) 0px 0px 8px;
+			}	
+</style>
+
+</head>
+<body>
+<center><h1>Welcome to G10 Consulant</h1>
+<div class="g-signin2" data-onsuccess="onSignIn"></div>
+</center>
+<div class="data">
+	<h3>Profile Details</h3>
+	<img id="pic" class="img-circle" width="100" height="100"/>
+	
+	<p>Email Address</p>
+	<p id="email" class="alert alert-danger"></p>
+
+	<form method="Post">
+	<p class="name">
+	<label>Enter image Url</label>
+	<input type="text"  placeholder="http://imgur.com/gallery/ghY2v" required/>
+	<button id="myimg" onclick="getImage()" class="btn btn-danger">Get Image</button><br>
+
+	<button onclick="signOut()" class="btn btn-danger">SignOut</button>
+</div>
+</body>
+
+</html>
